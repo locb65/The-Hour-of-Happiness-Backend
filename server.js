@@ -14,7 +14,7 @@ app.use(cors(corsOption));
 // parses the data
 app.use(express.json())
 
-app.use("HappyHourTime", restaurantRouter)
+app.use("/HappyHourTime", restaurantRouter)
 
 app.listen(4000, () => {
 console.log('The Server is ALIVE on 4000')
