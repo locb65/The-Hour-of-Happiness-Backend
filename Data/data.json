@@ -1,0 +1,81 @@
+[
+    {
+        "name": "Blackwall Hitch",
+        "address": "5 Cameron Street, Alexandria, VA 22314",
+        "city": "Alexandria",
+        "state": "Virginia",
+        "phone": "703-739-6090",
+        "happyHour": "Monday-Friday, 4pm-7pm (Bar Only)",
+        "menu": "https://www.blackwallhitchalexandria.com/menu/",
+        "restaurant-img": "https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill,f_jpg,h_400,q_75,w_640/https://assets.simpleviewinc.com/simpleview/image/upload/crm/annapolis/exterior8-d90490285056a36_d9049164-5056-a36a-0b651d4b8d10ba26.jpg"
+      },
+      {
+        "name": "Joe Theismann's Restaurant",
+        "address": "1800A Diagonal Rd, Alexandria, VA 22314",
+        "state": "Virginia",
+        "phone": "(703) 739-0777",
+        "happyHour": "Monday-Friday, 3pm-7pm",
+        "menu": "https://www.theismanns.com/menus#happy-hour",
+        "restaurant-img": "https://assets.website-files.com/5f720df219426cee022654d3/5f720df219426c6e9e265590_Theismanns_Exterior.jpg"
+      },
+      {
+        "name": "The Majestic",
+        "address": "911 King St, Alexandria, VA 22314",
+        "city": "Alexandria",
+        "state": "Virginia",
+        "phone": "(703) 837-9117",
+        "happyHour": "Monday-Friday, 3pm-7pm (Bar Only)",
+        "menu": "https://www.themajesticva.com/menus#happy-hour",
+        "restaurant-img": "https://assets.website-files.com/5f720d888f76d3c4c36c59d6/5f720d888f76d3d3e96c5be8_Majestic-Outside-03%20(2).jpg"
+      },
+      {
+        "name": "Murphy's Grand Irish Pub",
+        "address": "713 King St, Alexandria, VA 22314",
+        "city": "Alexandria",
+        "state": "Virginia",
+        "phone": "(703) 548-1717",
+        "happyHour": "Yes",
+        "menu": "https://murphyspub.com/happy-hour/",
+        "restaurant-img": "https://visitalexandria.com/wp-content/uploads/2022/03/Murphy_s_Irish_Pub6_1800x1205_300_RGB0_3ed24205-5056-a36a-062d0acea3a30e73.jpg"
+      },
+      {
+        "name": "Cuba Libre Restaurant & Rum Bar",
+        "address": "801 9th St NW suite a, Washington, DC 20001",
+        "city": "Washington",
+        "state": "DC",
+        "phone": "(202) 408-1600",
+        "happyHour": " Monday-Friday, 4pm-7pm (Bar/Bar Table Only)",
+        "menu": "https://www.cubalibrerestaurant.com/en/washington/menus/happy-hour/",
+        "restaurant-img": "https://resizer.otstatic.com/v2/photos/wide-huge/1/25160765.jpg"
+      },
+      {
+        "name": "Founding Farmers DC",
+        "address": "1924 Pennsylvania Avenue NW, Washington, DC 20006",
+        "city": "Washington",
+        "state": "DC",
+        "phone": "(202) 822-8783",
+        "happyHour": "Monday-Friday, 3:30pm-5:30pm",
+        "menu": "https://www.wearefoundingfarmers.com/menus/?dc--penn-ave/happy-hour-",
+        "restaurant-img": "https://www.wearefoundingfarmers.com/wp-content/uploads/2020/02/LocationsModule_KOP_01.jpg"
+      },
+      {
+        "name": "Mission",
+        "address": "1606 20th St NW, Washington, DC 20009",
+        "city": "Washington",
+        "state": "DC",
+        "phone": "(202) 525-2010",
+        "happyHour": "Everyday, 4pm-6pm",
+        "menu": "https://www.missiondupont.com/menus/",
+        "restaurant-img": "https://cdn.vox-cdn.com/thumbor/z41sYqF_FhtHcXuOIRQbM-iRiS0=/0x0:960x641/1200x800/filters:focal(404x245:556x397)/cdn.vox-cdn.com/uploads/chorus_image/image/60678355/37696672_299267620814425_2741072296088174592_n.0.jpg"
+      },
+      {
+        "name": "High Side",
+        "address": "4009 Chain Bridge Rd, Fairfax, VA 22030",
+        "city": "Fairfax",
+        "state": "Virginia",
+        "phone": "(703) 865-8181",
+        "happyHour": "Tuesday-Thursday 4pm-7pm ",
+        "menu": "https://highsideva.com/menu",
+        "restaurant-img": "https://media-cdn.tripadvisor.com/media/photo-s/17/21/8b/be/20190402-202545-largejpg.jpg"
+      }
+]
