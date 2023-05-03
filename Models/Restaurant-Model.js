@@ -1,7 +1,7 @@
-import mongoose
+import mongoose from "../db/connections.js"
+const Schema = mongoose.Schema;
 
-from "mongoose";
-const restaurantSchema = new mongoose.Schema({
+const RestaurantSchema = new Schema({
     name: String,
     address: String,
     city: String,
@@ -12,5 +12,4 @@ const restaurantSchema = new mongoose.Schema({
     restaurantImg: String
   });
   
-  const Restaurant = mongoose.model('Restaurant', restaurantSchema);
-  export default Restaurant;
+export default mongoose.model("Restaurant", RestaurantSchema)
