@@ -52,3 +52,5 @@ const restaurantControllers = {
         }
     }
 }   
+
+export default restaurantControllers
