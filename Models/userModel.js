@@ -19,7 +19,7 @@ const UserSchema = new Schema({
     },
     favorites: [{
         // setting objectId to type to reference a users favorite happy hour places later
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Restaurant'
     }]
 })
