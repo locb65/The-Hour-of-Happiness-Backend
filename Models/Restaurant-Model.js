@@ -50,6 +50,7 @@ const RestaurantSchema = new Schema({
   },
   happyHour: {
     type: HappyHourSchema,
+    required: true
   },
   menu: {
     type: String,

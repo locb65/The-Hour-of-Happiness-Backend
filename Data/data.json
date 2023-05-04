@@ -25,7 +25,7 @@
       "zipCode": "22314"
     },
     "phone": "(703) 739-0777",
-    "happHour": {
+    "happyHour": {
       "day": "Monday-Friday",
       "time": "3pm-7pm",
       "deals": ""
@@ -60,7 +60,7 @@
     },
     "phone": "(703) 548-1717",
     "happyHour": {
-      "day": "Yes",
+      "day": "Please call",
       "time": "N/A",
       "deals": ""
     },
