@@ -1,4 +1,6 @@
 import Restaurant from "../Models/Restaurant-Model.js";
+import RestaurantOwnerUsers from "../Models/restaurantOwnerModel.js";
+import GeneralUsers from "../Models/userModel.js";
 import data from "./data.json" assert {type: 'json'}
 
 const seedDataBase = async () => {
@@ -7,6 +9,15 @@ const seedDataBase = async () => {
         await Restaurant.deleteMany({});
 
         await Restaurant.insertMany(data);
+
+        await RestaurantOwnerUsers.deleteMany({});
+
+        await RestaurantOwnerUsers.insertMany();
+
+        await GeneralUsers.deleteMany({});
+
+        await GeneralUsers.insertMany();
+
 
         console.log("seeded data successfully");
         // termination method indicating success
