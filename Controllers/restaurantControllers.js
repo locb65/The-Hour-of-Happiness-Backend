@@ -2,7 +2,7 @@ import Restaurant from "../Models/Restaurant-Model.js";
 
 
 // full CRUD controllers... Basic setup
-const restaurantControllers = {
+export const restaurantControllers = {
     getALLRestaurants: async (req, res) => {
         try {
             const allRestaurants = await Restaurant.find();
@@ -52,5 +52,3 @@ const restaurantControllers = {
         }
     }
 }   
-
-export default restaurantControllers
