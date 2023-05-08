@@ -1,4 +1,4 @@
-import restaurantControllers from "../Controllers/controllers.js";
+import restaurantControllers from "../Controllers/restaurantControllers.js";
 import express from "express";
 
 const restaurantRouter = express.Router();

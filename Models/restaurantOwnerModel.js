@@ -17,11 +17,11 @@ const restaurantOwnerUserSchema = new Schema({
         type: String,
         required: true
     },
-    restaurants: [{
-        // to reference the users own restaurants later to have full crud on it
-        type: Schema.Types.ObjectId,
-        ref: "Restaurant"
-    }]
+    // restaurants: [{
+    //     // to reference the users own restaurants later to have full crud on it
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Restaurant"
+    // }]
 })
 
 export default mongoose.model("RestaurantsOwnerUsers", restaurantOwnerUserSchema)

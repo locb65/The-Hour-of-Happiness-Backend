@@ -17,11 +17,11 @@ const UserSchema = new Schema({
         type: String,
         required: true, 
     },
-    favorites: [{
-        // setting objectId to type to reference a users favorite happy hour places later
-        type: Schema.Types.ObjectId,
-        ref: 'Restaurant'
-    }]
+    // favorites: [{
+    //     // setting objectId to type to reference a users favorite happy hour places later
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Restaurant'
+    // }]
 })
 
 export default mongoose.model('User', UserSchema)
