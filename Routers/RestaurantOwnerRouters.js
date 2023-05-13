@@ -8,3 +8,5 @@ ownerRouter.get('/restaurant-owners/:id', restaurantOwnerControllers.getOwnerbyI
 ownerRouter.post('/restaurant-owners/new-owner', restaurantOwnerControllers.createOwner)
 ownerRouter.put('/update-owner/:id', restaurantOwnerControllers.updateOwner)
 ownerRouter.delete('/delete-owner/:id', restaurantOwnerControllers.deleteOwner)
+
+export default ownerRouter

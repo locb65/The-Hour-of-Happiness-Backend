@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import restaurantRouter from './Routers/Restaurant-Routers.js';
-
+import ownerRouter from './Routers/RestaurantOwnerRouters.js';
 const app = express();
 
 const corsOption = {
@@ -14,7 +14,9 @@ app.use(cors(corsOption));
 // parses the data
 app.use(express.json())
 
-app.use("/HappyHourTime", restaurantRouter)
+app.use("/happy-hour-time", restaurantRouter)
+
+app.use("/accounts")
 
 app.listen(4000, () => {
 console.log('The Server is ALIVE on 4000')
