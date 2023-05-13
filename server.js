@@ -16,7 +16,7 @@ app.use(express.json())
 
 app.use("/happy-hour-time", restaurantRouter)
 
-app.use("/accounts")
+app.use("/accounts", ownerRouter);
 
 app.listen(4000, () => {
 console.log('The Server is ALIVE on 4000')
