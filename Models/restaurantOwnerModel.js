@@ -26,8 +26,8 @@ const restaurantOwnerUserSchema = new Schema({
 })
 
 // method to check if the password has been modified before creating or updating the document
-restaurantOwnerUserSchema.pre("save", async (next) => {
-    if (!this.isModifed("password")) {
+restaurantOwnerUserSchema.pre("save", async function (next) {
+    if (!this.isModified("password")) {
         return next();
     }
     try {
@@ -41,7 +41,7 @@ restaurantOwnerUserSchema.pre("save", async (next) => {
     }
 })
 // method for comparing entered password to stored hashed passwords to authentification
-restaurantOwnerUserSchema.methods.comparePassword = async (password) => {
+restaurantOwnerUserSchema.methods.comparePassword = async function(password) {
     try {
         return await bcrypt.compare(password, this.password);
     } catch (error) {

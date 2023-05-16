@@ -14,7 +14,7 @@ const app = express();
 dotenv.config();
 
 const mySecretKey = process.env.SECRET_KEY
-const mongoUrl = 'mongodb://localhost/happyhourdb';
+const mongoUrl = "mongodb://localhost/happyhourdb";
 
 const MongoStore = connectMongo.create({ mongoUrl });
 
