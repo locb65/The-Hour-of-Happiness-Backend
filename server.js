@@ -6,7 +6,7 @@ import session from "express-session"
 import passport from 'passport';
 import connectMongo from 'connect-mongo';
 import dotenv from 'dotenv';
-import mongoose from './db/connections.js'
+import './Middlewares/Passport.js'
 
 
 const app = express();
@@ -37,15 +37,18 @@ app.use(
   })
 )
 
-app.use("/happy-hour-time", restaurantRouter)
-
-app.use("/accounts", ownerRouter);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // handles authentication
 app.post('/login', passport.authenticate('local'), (req, res) => {
   // Successful authentication, send a success response
   res.json({ message: 'Authentication successful' });
 });
+
+app.use("/happy-hour-time", restaurantRouter)
+
+app.use("/accounts", ownerRouter);
 
 app.listen(4000, () => {
 console.log('The Server is ALIVE on 4000')

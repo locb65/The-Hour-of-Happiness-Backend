@@ -1,12 +1,12 @@
 import passport from "passport";
-import LocalStrategy from "passport-local";
+import { Strategy as LocalStrategy } from 'passport-local';
 import RestaurantOwnerModel from "../Models/restaurantOwnerModel.js";
 import bcrypt from  "bcrypt";
 
 
 // use method for generating a new instacnce of local strategy
 passport.use(
-    new LocalStrategy.Strategy(
+    new LocalStrategy (
         {
             usernameField: "email",
             passwordField: "password",
