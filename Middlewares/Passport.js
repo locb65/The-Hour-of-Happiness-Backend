@@ -33,3 +33,21 @@ passport.use(
         }
     ),
 )
+
+// need to set up user serializers using passport
+
+
+passport.serializeUser((user, done) => {
+    done(null, user.id)
+});
+
+
+// method for using id to retrieve user from serializer above
+passport.deserializeUser(async(id, done) => {
+    try {
+        const user = await RestaurantOwnerModel.findById(id);
+        done(null, user)
+    } catch (error) {
+        done(error);
+    }
+});
