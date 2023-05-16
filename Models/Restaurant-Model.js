@@ -1,4 +1,5 @@
 import mongoose from "../db/connections.js"
+import RestaurantOwnerUsers from "./restaurantOwnerModel.js";
 
 const Schema = mongoose.Schema;
 
@@ -60,6 +61,10 @@ const RestaurantSchema = new Schema({
     type: String,
     required: true
   },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "RestaurantOwnerUsers",
+  }
 });
 
 export default mongoose.model("Restaurant", RestaurantSchema)
