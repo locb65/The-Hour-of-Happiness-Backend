@@ -28,6 +28,10 @@ app.use(cors(corsOption));
 // parses the data
 app.use(express.json())
 
+app.use("/happy-hour-time", restaurantRouter)
+
+app.use("/accounts", ownerRouter);
+
 app.use(
   session({
     secret: mySecretKey,
@@ -40,15 +44,21 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.post('/logout', function(req, res, next) {
+  req.logout(function(err) {
+    if (err) {
+      return next(err);
+    }
+  res.json({ message: 'logout' });
+  });
+});
 // handles authentication
 app.post('/login', passport.authenticate('local'), (req, res) => {
   // Successful authentication, send a success response
   res.json({ message: 'Authentication successful' });
 });
 
-app.use("/happy-hour-time", restaurantRouter)
 
-app.use("/accounts", ownerRouter);
 
 app.listen(4000, () => {
 console.log('The Server is ALIVE on 4000')
