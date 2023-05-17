@@ -22,7 +22,7 @@ const mongoUrl = "mongodb://localhost/happyhourdb";
 const MongoStore = connectMongo.create({ mongoUrl });
 
 const corsOption = {
-    origin: "http://localhost:3000",
+    origin: "*",
     credentials: true,
     optionSuccessStatus: 200,
   };
