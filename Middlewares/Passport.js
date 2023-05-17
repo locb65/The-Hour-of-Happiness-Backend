@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from 'passport-local';
-import RestaurantOwnerModel from "../Models/restaurantOwnerModel.js";
+import RestaurantOwnerUsers from "../Models/restaurantOwnerModel.js";
 import bcrypt from  "bcrypt";
 
 
@@ -14,7 +14,7 @@ passport.use(
         async (email, password, done) => {
             try {
                 // finding the user based on email
-                const user = await RestaurantOwnerModel.findOne({ email });
+                const user = await RestaurantOwnerUsers.findOne({ email });
                 // checks to see if email exists in db
                 if (!user) {
                     return done(null, false, {message: "Email not found"});
@@ -45,9 +45,19 @@ passport.serializeUser((user, done) => {
 // method for using id to retrieve user from serializer above
 passport.deserializeUser(async(id, done) => {
     try {
-        const user = await RestaurantOwnerModel.findById(id);
+        const user = await RestaurantOwnerUsers.findById(id);
         done(null, user)
     } catch (error) {
         done(error);
     }
 });
+
+export const checkAuthentication = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        // User is authenticated and active
+        res.json({ authenticated: true });
+      } else {
+        // User is not authenticated or session has expired
+        res.json({ authenticated: false });
+      }
+}

@@ -8,6 +8,9 @@ import connectMongo from 'connect-mongo';
 import dotenv from 'dotenv';
 import './Middlewares/Passport.js'
 
+import { checkAuthentication } from './Middlewares/Passport.js';
+
+
 
 const app = express();
 
@@ -19,18 +22,13 @@ const mongoUrl = "mongodb://localhost/happyhourdb";
 const MongoStore = connectMongo.create({ mongoUrl });
 
 const corsOption = {
-    origin: "*",
+    origin: "http://localhost:3000",
     credentials: true,
     optionSuccessStatus: 200,
   };
 // cors used to allow communication between frontend and backend
 app.use(cors(corsOption));
-// parses the data
 app.use(express.json())
-
-app.use("/happy-hour-time", restaurantRouter)
-
-app.use("/accounts", ownerRouter);
 
 app.use(
   session({
@@ -43,6 +41,14 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.get('/');
+app.use("/happy-hour-time", restaurantRouter)
+
+app.use("/accounts", ownerRouter);
+
+app.get('/check-authentication', checkAuthentication, (req, res) => {
+
+});
 
 app.post('/logout', function(req, res, next) {
   req.logout(function(err) {
@@ -55,9 +61,8 @@ app.post('/logout', function(req, res, next) {
 // handles authentication
 app.post('/login', passport.authenticate('local'), (req, res) => {
   // Successful authentication, send a success response
-  res.json({ message: 'Authentication successful' });
+  res.redirect("/");
 });
-
 
 
 app.listen(4000, () => {
