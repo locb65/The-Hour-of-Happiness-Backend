@@ -22,7 +22,7 @@ const mongoUrl = "mongodb://localhost/happyhourdb";
 const MongoStore = connectMongo.create({ mongoUrl });
 
 const corsOption = {
-    origin: "*",
+    origin: "http://localhost:3000",
     credentials: true,
     optionSuccessStatus: 200,
   };
@@ -61,7 +61,8 @@ app.post('/logout', function(req, res, next) {
 // handles authentication
 app.post('/login', passport.authenticate('local'), (req, res) => {
   // Successful authentication, send a success response
-  res.redirect("/");
+  res.json({ message: "Authentication successful" });
+  // res.redirect("/");
 });
 
 
