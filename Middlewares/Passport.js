@@ -46,7 +46,11 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async(id, done) => {
     try {
         const user = await RestaurantOwnerUsers.findById(id);
+        if(user) {
         done(null, user)
+        } else {
+            done(null, false);
+        }
     } catch (error) {
         done(error);
     }

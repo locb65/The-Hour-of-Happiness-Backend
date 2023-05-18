@@ -7,6 +7,7 @@ import passport from 'passport';
 import connectMongo from 'connect-mongo';
 import dotenv from 'dotenv';
 import './Middlewares/Passport.js'
+import restaurantOwnerUsers from './Models/restaurantOwnerModel.js';
 
 import { checkAuthentication } from './Middlewares/Passport.js';
 
@@ -35,6 +36,7 @@ app.use(
     secret: mySecretKey,
     resave: false,
     saveUninitialized: false,
+    cookie: { secure: true},
     store: MongoStore,
   })
 )
@@ -46,9 +48,9 @@ app.use("/happy-hour-time", restaurantRouter)
 
 app.use("/accounts", ownerRouter);
 
-app.get('/check-authentication', checkAuthentication, (req, res) => {
+// app.get('/check-authentication', checkAuthentication, (req, res) => {
 
-});
+// });
 
 app.post('/logout', function(req, res, next) {
   req.logout(function(err) {
@@ -60,11 +62,23 @@ app.post('/logout', function(req, res, next) {
 });
 // handles authentication
 app.post('/login', passport.authenticate('local'), (req, res) => {
+  if (req.user) {
+    res.json({ message: "Authentication successful", user: req.user });
+  } else {
+    res.status(401).json({ message: "Authentication failed" });
+  }
+  // console.log(req.user);
+  // const { _id, name } = req.user;
+  // const user = new restaurantOwnerUsers({ name })
+  // req.login(user, function(err) {
+  //   if (err) {
+  //     console.log(err);
+  // }
   // Successful authentication, send a success response
-  res.json({ message: "Authentication successful" });
+  
   // res.redirect("/");
+  // });
 });
-
 
 app.listen(4000, () => {
 console.log('The Server is ALIVE on 4000')
