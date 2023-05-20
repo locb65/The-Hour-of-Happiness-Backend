@@ -14,11 +14,6 @@ const seedDataBase = async () => {
 
         await RestaurantOwnerUsers.insertMany();
 
-        await GeneralUsers.deleteMany({});
-
-        await GeneralUsers.insertMany();
-
-
         console.log("seeded data successfully");
         // termination method indicating success
         process.exit(0);
