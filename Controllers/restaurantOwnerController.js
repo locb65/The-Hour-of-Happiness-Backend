@@ -25,7 +25,7 @@ export const restaurantOwnerControllers = {
     getUserSpecificRestaurants: async (req, res) => {
         try {
             const id = req.params.id;
-            const user = await RestaurantOwnerUsers.findById.populate('restaurants');
+            const user = await RestaurantOwnerUsers.findById(id).populate('restaurants');
             const restaurants = user.restaurants;
             res.json(restaurants);
         }catch(err) {
