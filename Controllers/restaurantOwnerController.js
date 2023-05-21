@@ -1,4 +1,5 @@
 import RestaurantOwnerUsers from "../Models/restaurantOwnerModel.js";
+import Restaurat from "../Models/Restaurant-Model.js"
 
 export const restaurantOwnerControllers = {
     getAllOwners: async (req, res) => {
@@ -16,6 +17,18 @@ export const restaurantOwnerControllers = {
             const ownerById = await RestaurantOwnerUsers.findById(id)
             res.json(ownerById);
         } catch (err) {
+            console.log(err);
+            res.status(500).json(err);
+        }
+    },
+    // populate user Restauratns owned
+    getUserSpecificRestaurants: async (req, res) => {
+        try {
+            const id = req.params.id;
+            const user = await RestaurantOwnerUsers.findById.populate('restaurants');
+            const restaurants = user.restaurants;
+            res.json(restaurants);
+        }catch(err) {
             console.log(err);
             res.status(500).json(err);
         }
