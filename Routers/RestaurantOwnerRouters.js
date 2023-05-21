@@ -5,6 +5,7 @@ const ownerRouter = express.Router();
 
 ownerRouter.get('/restaurant-owners', restaurantOwnerControllers.getAllOwners)
 ownerRouter.get('/restaurant-owners/:id', restaurantOwnerControllers.getOwnerbyId)
+ownerRouter.get('/restaurant-owners/owned-restaurants', restaurantOwnerControllers.getUserSpecificRestaurants)
 ownerRouter.post('/restaurant-owners/new-owner', restaurantOwnerControllers.createOwner)
 ownerRouter.put('/update-owner/:id', restaurantOwnerControllers.updateOwner)
 ownerRouter.delete('/delete-owner/:id', restaurantOwnerControllers.deleteOwner)
