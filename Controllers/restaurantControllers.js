@@ -22,15 +22,16 @@ export const restaurantControllers = {
     searchRestaurantsByName: async (req, res) => {
         try {
             const { name } = req.query;
-            if (!name) {
-              return res.status(400).json({ error: "Invalid search query" });
-            }
-        
-            const decodedName = decodeURI(name);
-            const restaurants = await Restaurant.find({
-                name: { $regex: new RegExp(decodedName, "i") },
-                });
+            if (name === "") {
+                const allRestaurants = await Restaurant.find();
+                res.json(allRestaurants);
+            } else {
+                const decodedName = decodeURI(name);
+                const restaurants = await Restaurant.find({
+                    name: { $regex: new RegExp(decodedName, "i") },
+            });
             res.json(restaurants);
+            }
         } catch (err) {
             console.log(err);
             res.status(500).json(err);
