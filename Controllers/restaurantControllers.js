@@ -5,11 +5,28 @@ import Restaurant from "../Models/Restaurant-Model.js";
 export const restaurantControllers = {
     getALLRestaurants: async (req, res) => {
         try {
-            const allRestaurants = await Restaurant.find();
-            res.json(allRestaurants)
+            const { search } = req.query;
+            let allRestaurants;
+      
+            if (search) {
+              allRestaurants = await Restaurant.find({ name: { $regex: search, $options: 'i' } });
+            } else {
+              allRestaurants = await Restaurant.find();
+            }
+            res.json(allRestaurants);
         } catch (err) {
             console.log(err);
             res.status(500).json(err);
+        }
+    },
+    searchRestaurantsByName: async (req, res) => {
+        try {
+          const { name } = req.query;
+          const restaurants = await Restaurant.find({ name: { $regex: name, $options: 'i' } });
+          res.json(restaurants);
+        } catch (err) {
+          console.log(err);
+          res.status(500).json(err);
         }
     },
     findRestaurantbyID: async (req, res) => {
