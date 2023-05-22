@@ -59,7 +59,7 @@ const RestaurantSchema = new Schema({
   },
   restaurantImg: {
     type: String,
-    required: true
+    // required: true
   },
   owner: {
     type: Schema.Types.ObjectId,

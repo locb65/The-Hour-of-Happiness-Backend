@@ -8,16 +8,38 @@ import connectMongo from 'connect-mongo';
 import dotenv from 'dotenv';
 import './Middlewares/Passport.js'
 import restaurantOwnerUsers from './Models/restaurantOwnerModel.js';
+import multer from 'multer';
+import cloudinary from 'cloudinary';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
 
-import { checkAuthentication } from './Middlewares/Passport.js';
-
-
-
-const app = express();
 
 dotenv.config();
 
 const mySecretKey = process.env.SECRET_KEY
+const cloudinaryName = process.env.CLOUD_NAME
+const cloudinarySecret = process.env.CLOUD_API_SECRET_KEY
+const cloudinaryAPIKey = process.env.CLOUD_API_KEY
+
+// cloudiary settings
+cloudinary.config({
+  cloud_name: cloudinaryName,
+  api_key: cloudinaryAPIKey,
+  api_secret: cloudinarySecret,
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  folder: 'uploads',
+  allowedFormats: ['jpg', 'png'],
+  transformation: [{ width: 500, height: 500, crop: 'limit' }],
+});
+
+const upload = multer({storage: storage})
+
+const app = express();
+
+
+
 const mongoUrl = "mongodb://localhost/happyhourdb";
 
 const MongoStore = connectMongo.create({ mongoUrl });
@@ -27,6 +49,8 @@ const corsOption = {
     credentials: true,
     optionSuccessStatus: 200,
   };
+
+
 // cors used to allow communication between frontend and backend
 app.use(cors(corsOption));
 app.use(express.json())
@@ -79,6 +103,14 @@ app.post('/login', passport.authenticate('local'), (req, res) => {
   // res.redirect("/");
   // });
 });
+
+app.post('/upload-img', upload.single('file'), (req, res) => {
+  const file = req.file
+  if(!file) {
+    return res.status(400).json({ error: 'No file Uploaded' })
+  }
+  res.json({ imageUrl: file.path })
+})
 
 app.listen(4000, () => {
 console.log('The Server is ALIVE on 4000')
