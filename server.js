@@ -11,6 +11,8 @@ import restaurantOwnerUsers from './Models/restaurantOwnerModel.js';
 import multer from 'multer';
 import cloudinary from 'cloudinary';
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import { checkAuthentication } from './Middlewares/Passport.js';
+import MongoStore from 'connect-mongo';
 
 
 dotenv.config();
@@ -42,7 +44,7 @@ const app = express();
 
 const mongoUrl = "mongodb://localhost/happyhourdb";
 
-const MongoStore = connectMongo.create({ mongoUrl });
+// const MongoStore = connectMongo.create({ mongoUrl });
 
 const corsOption = {
     origin: "http://localhost:3000",
@@ -60,8 +62,11 @@ app.use(
     secret: mySecretKey,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true},
-    store: MongoStore,
+    cookie: { secure: false},
+    store: MongoStore.create({
+      mongoUrl: mongoUrl,
+      autoRemove: 'native'
+    }),
   })
 )
 
@@ -72,9 +77,14 @@ app.use("/happy-hour-time", restaurantRouter)
 
 app.use("/accounts", ownerRouter);
 
-// app.get('/check-authentication', checkAuthentication, (req, res) => {
-
-// });
+app.get('/check-authentication', checkAuthentication, (req, res) => {
+  if (req.isAuthenticated()) {
+    console.log(isAuthenticated(req.user));
+    res.json({ authenticated: true, user: req.user });
+  } else {
+    res.json({ authenticated: false });
+  }
+});
 
 app.post('/logout', function(req, res, next) {
   req.logout(function(err) {
@@ -91,18 +101,20 @@ app.post('/login', passport.authenticate('local'), (req, res) => {
   } else {
     res.status(401).json({ message: "Authentication failed" });
   }
-  // console.log(req.user);
-  // const { _id, name } = req.user;
-  // const user = new restaurantOwnerUsers({ name })
-  // req.login(user, function(err) {
-  //   if (err) {
-  //     console.log(err);
-  // }
-  // Successful authentication, send a success response
-  
-  // res.redirect("/");
-  // });
 });
+
+// app.post('/login', (req, res, next) => {
+//   passport.authenticate('local', (err, user, info) =>{
+//     if(err) throw err;
+//     if(!user) res.send("no User Found");
+//     else{
+//       req.logIn(user, err => {
+//         if(err) throw err;
+//         res.json(req.user)
+//         console.log(req.user)
+//       })}
+//   })(req, res, next)
+// })
 
 app.post('/upload-img', upload.single('file'), (req, res) => {
   const file = req.file

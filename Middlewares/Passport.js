@@ -37,6 +37,16 @@ passport.use(
 // need to set up user serializers using passport
 
 
+// passport.serializeUser ((user, cb) => {
+//     cb(null, user.id)
+// })
+
+// passport.deserializeUser ((id, cb) => {
+//     RestaurantOwnerUsers.findOne({_id: id}, (err, user) => {
+//         cb(err, user)
+//     });
+// })
+
 passport.serializeUser((user, done) => {
     done(null, user.id)
 });
@@ -49,7 +59,7 @@ passport.deserializeUser(async(id, done) => {
         if(user) {
         done(null, user)
         } else {
-            done(null, false);
+        done(null, false);
         }
     } catch (error) {
         done(error);
