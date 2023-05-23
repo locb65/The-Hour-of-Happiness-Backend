@@ -4,10 +4,9 @@ import restaurantRouter from './Routers/Restaurant-Routers.js';
 import ownerRouter from './Routers/RestaurantOwnerRouters.js';
 import session from "express-session"
 import passport from 'passport';
-import connectMongo from 'connect-mongo';
+// import connectMongo from 'connect-mongo';
 import dotenv from 'dotenv';
 import './Middlewares/Passport.js'
-import restaurantOwnerUsers from './Models/restaurantOwnerModel.js';
 import multer from 'multer';
 import cloudinary from 'cloudinary';
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
@@ -29,6 +28,7 @@ cloudinary.config({
   api_secret: cloudinarySecret,
 });
 
+// Cloudinary Storage settings using multer
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   folder: 'uploads',
@@ -46,6 +46,10 @@ const mongoUrl = "mongodb://localhost/happyhourdb";
 
 // const MongoStore = connectMongo.create({ mongoUrl });
 
+
+// const MongoStore = connectMongo.create({ mongoUrl });
+
+// cors options
 const corsOption = {
     origin: "http://localhost:3000",
     credentials: true,
@@ -55,28 +59,40 @@ const corsOption = {
 
 // cors used to allow communication between frontend and backend
 app.use(cors(corsOption));
+
+// built in express body parser
 app.use(express.json())
 
+// passport session options
 app.use(
   session({
     secret: mySecretKey,
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false},
-    store: MongoStore.create({
+    store:
+     MongoStore.create({
       mongoUrl: mongoUrl,
       autoRemove: 'native'
     }),
   })
 )
-
+// starts passport session
 app.use(passport.initialize());
 app.use(passport.session());
+
+// home route
 app.get('/');
+
+// base route for restaurants
 app.use("/happy-hour-time", restaurantRouter)
 
+
+// base route for user accounts
 app.use("/accounts", ownerRouter);
 
+
+//for authenticating sessions for persisting data. currently not working as intended
 app.get('/check-authentication', checkAuthentication, (req, res) => {
   if (req.isAuthenticated()) {
     console.log(isAuthenticated(req.user));
@@ -86,6 +102,8 @@ app.get('/check-authentication', checkAuthentication, (req, res) => {
   }
 });
 
+
+// passport.js built in logout functionality
 app.post('/logout', function(req, res, next) {
   req.logout(function(err) {
     if (err) {
@@ -94,7 +112,7 @@ app.post('/logout', function(req, res, next) {
   res.json({ message: 'logout' });
   });
 });
-// handles authentication
+// passport built in functionality that handles authentication and logging in
 app.post('/login', passport.authenticate('local'), (req, res) => {
   if (req.user) {
     res.json({ message: "Authentication successful", user: req.user });
@@ -116,6 +134,8 @@ app.post('/login', passport.authenticate('local'), (req, res) => {
 //   })(req, res, next)
 // })
 
+
+// route for uploading images. May not need this due to using Cloudinary instead
 app.post('/upload-img', upload.single('file'), (req, res) => {
   const file = req.file
   if(!file) {
