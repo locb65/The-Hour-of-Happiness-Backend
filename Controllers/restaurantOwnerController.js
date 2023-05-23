@@ -1,5 +1,6 @@
 import RestaurantOwnerUsers from "../Models/restaurantOwnerModel.js";
 import Restaurat from "../Models/Restaurant-Model.js"
+import bcrypt from 'bcrypt';
 
 export const restaurantOwnerControllers = {
     getAllOwners: async (req, res) => {
@@ -45,7 +46,15 @@ export const restaurantOwnerControllers = {
     updateOwner: async (req, res) => {
         try {
             const id = req.params.id;
-            const updatedOwner = await RestaurantOwnerUsers.findByIdAndUpdate(id, req.body, {new: true})
+            const { email, password } = req.body;
+
+            if (password) {
+                const salt = await bcrypt.genSalt(10);
+                const hashedPassword = await bcrypt.hash(password, salt);
+                req.body.password = hashedPassword;
+            }
+            const updatedOwner = await RestaurantOwnerUsers.findByIdAndUpdate(id, req.body, {new: true});
+            res.json(updatedOwner);
         } catch (err) {
             console.error(err)
             res.status(500).json(err);
