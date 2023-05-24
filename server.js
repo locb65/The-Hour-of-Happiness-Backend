@@ -144,6 +144,6 @@ app.post('/upload-img', upload.single('file'), (req, res) => {
   res.json({ imageUrl: file.path })
 })
 
-app.listen(4000, () => {
-console.log('The Server is ALIVE on 4000')
+app.listen(process.env.PORT || 4000, () => {
+console.log('The Server is ALIVE!')
 }); 
