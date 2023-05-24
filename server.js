@@ -20,6 +20,7 @@ const mySecretKey = process.env.SECRET_KEY
 const cloudinaryName = process.env.CLOUD_NAME
 const cloudinarySecret = process.env.CLOUD_API_SECRET_KEY
 const cloudinaryAPIKey = process.env.CLOUD_API_KEY
+const MONGO_URI = process.env.MONGO_URL
 
 // cloudiary settings
 cloudinary.config({
@@ -72,7 +73,7 @@ app.use(
     cookie: { secure: false},
     store:
      MongoStore.create({
-      mongoUrl: mongoUrl,
+      mongoUrl: MONGO_URI,
       autoRemove: 'native'
     }),
   })
@@ -81,11 +82,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// home route
-app.get('/');
 
 // base route for restaurants
-app.use("/happy-hour-time", restaurantRouter)
+app.use("/", restaurantRouter)
 
 
 // base route for user accounts
