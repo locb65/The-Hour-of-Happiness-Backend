@@ -7,7 +7,8 @@ const URI = "mongodb://localhost/happyhourdb";
 // mongo connections script
 mongoose.connect(
     // MONGO_URI,
-    "mongodb+srv://clinkcityadmin:C2eb75d8a3@clink-city.ppzbl7l.mongodb.net/?retryWrites=true&w=majorityretryWrites=true&w=majority", {
+    'mongodb+srv://clinkcityadmin:password123456789@clink-city.ppzbl7l.mongodb.net/?retryWrites=true&w=majority',
+    {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })

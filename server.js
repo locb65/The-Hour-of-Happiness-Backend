@@ -16,7 +16,7 @@ import MongoStore from 'connect-mongo';
 
 dotenv.config();
 
-const mySecretKey = process.env.SECRET_KEY
+const SECRET_KEY = process.env.SECRET_KEY
 const cloudinaryName = process.env.CLOUD_NAME
 const cloudinarySecret = process.env.CLOUD_API_SECRET_KEY
 const cloudinaryAPIKey = process.env.CLOUD_API_KEY
@@ -67,14 +67,14 @@ app.use(express.json())
 // passport session options
 app.use(
   session({
-    secret: mySecretKey,
+    secret: SECRET_KEY,
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false},
     store:
      MongoStore.create({
       // mongoUrl: MONGO_URI,
-      mongoUrl: 'mongodb+srv://clinkcityadmin:C2eb75d8a3@clink-city.ppzbl7l.mongodb.net/?retryWrites=true&w=majorityretryWrites=true&w=majority',
+      mongoUrl: 'mongodb+srv://clinkcityadmin:password123456789@clink-city.ppzbl7l.mongodb.net/?retryWrites=true&w=majority',
       autoRemove: 'native'
     }),
   })
