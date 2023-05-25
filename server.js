@@ -88,7 +88,7 @@ app.use(passport.session());
 
 
 // base route for restaurants
-app.use("/happy-hour-locations", restaurantRouter)
+app.use("/happy-hour-time", restaurantRouter)
 
 
 // base route for user accounts
