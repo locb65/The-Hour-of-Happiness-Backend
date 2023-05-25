@@ -3,7 +3,7 @@ import express from "express";
 
 const restaurantRouter = express.Router();
 
-restaurantRouter.get('/', restaurantControllers.getALLRestaurants);
+restaurantRouter.get('/locations', restaurantControllers.getALLRestaurants);
 restaurantRouter.get('/search/name', restaurantControllers.searchRestaurantsByName);
 restaurantRouter.get('/find-by-id/:id', restaurantControllers.findRestaurantbyID);
 restaurantRouter.post('/new-happy-hour-location', restaurantControllers.addRestaurant);
