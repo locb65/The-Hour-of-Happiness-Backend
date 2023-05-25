@@ -39,7 +39,7 @@ export const restaurantControllers = {
     },
     findRestaurantbyID: async (req, res) => {
         try {
-            const id = req.params.id;
+            const id = req.params._id;
             if (!id) {
                 return res.status(400).json({ message: "Invalid restaurant ID" });
               }
