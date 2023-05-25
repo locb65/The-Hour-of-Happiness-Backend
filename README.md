@@ -83,9 +83,10 @@ These should all be installed when you run `npm install`
 
 
 ## Example JSON Output
+### For Restaurants:
+<details>
 
-
-For Restaurants:
+<summary>Click Here for Example</summary>
 
 ```
   {
@@ -111,8 +112,13 @@ For Restaurants:
     __v: 0
   }
 ```
+</details>
 
-For Users:
+### For Users
+
+<details>
+
+<summary>Click Here for Example</summary>
 
 ```
   {
@@ -132,9 +138,15 @@ For Users:
     __v: 0
   }
 ```
+
+</details>
+
 ## Built with!
 
-* [JavaScript]
+* JavaScript
+* ExpressJS
+* MongoDB
+* Will be deployed with Heroku
 
 ## Future additions
 1. Fix bug with users auth not persisting on refresh.
@@ -143,3 +155,14 @@ For Users:
 4. add a general user model/controllers/routes
 5. add a events model/controllers/routes
 6. switch from passport.js to another auth framework
+
+
+
+## Links/Social
+
+* FrontEnd Repo: [The Hour Of Happiness](https://github.com/locb65/The-Hour-of-Happiness-Frontend)
+* Deployed Heroku Link: [Coming soon]()
+* LinkedIn: [Loc Bui - LinkedIn](https://www.linkedin.com/in/loc-bui-b574ba128/)
+* Twitter: [Coding-Locker](https://twitter.com/coding_locker)
+
+# Thank You for checking this out!
