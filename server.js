@@ -73,7 +73,7 @@ app.use(
     secret: SECRET_KEY,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false},
+    cookie: { secure: true},
     store:
      MongoStore.create({
       // mongoUrl: MONGO_URI,
