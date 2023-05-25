@@ -74,7 +74,7 @@ app.use(
     store:
      MongoStore.create({
       // mongoUrl: MONGO_URI,
-      mongoUrl: 'mongodb+srv://clinkcityadmin:password123456789@clink-city.ppzbl7l.mongodb.net/?retryWrites=true&w=majority',
+      mongoUrl: 'mongodb+srv://clinkcityadmin:testpassword123456789@clink-city.ppzbl7l.mongodb.net/?retryWrites=true&w=majority',
       autoRemove: 'native'
     }),
   })
