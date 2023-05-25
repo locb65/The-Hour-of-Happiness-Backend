@@ -73,7 +73,8 @@ app.use(
     cookie: { secure: false},
     store:
      MongoStore.create({
-      mongoUrl: MONGO_URI,
+      // mongoUrl: MONGO_URI,
+      mongoUrl: 'mongodb+srv://clinkcityadmin:C2eb75d8a3@clink-city.ppzbl7l.mongodb.net/?retryWrites=true&w=majorityretryWrites=true&w=majority',
       autoRemove: 'native'
     }),
   })
