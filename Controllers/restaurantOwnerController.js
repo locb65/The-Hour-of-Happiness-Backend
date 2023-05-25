@@ -14,7 +14,7 @@ export const restaurantOwnerControllers = {
     },
     getOwnerbyId: async (req, res) => {
         try {
-            const id = req.params.id;
+            const id = req.params._id;
             const ownerById = await RestaurantOwnerUsers.findById(id)
             res.json(ownerById);
         } catch (err) {
@@ -25,7 +25,7 @@ export const restaurantOwnerControllers = {
     // populate user Restauratns owned
     getUserSpecificRestaurants: async (req, res) => {
         try {
-            const id = req.params.id;
+            const id = req.params._id;
             const user = await RestaurantOwnerUsers.findById(id).populate('restaurants');
             const restaurants = user.restaurants;
             res.json(restaurants);
@@ -45,7 +45,7 @@ export const restaurantOwnerControllers = {
     },
     updateOwner: async (req, res) => {
         try {
-            const id = req.params.id;
+            const id = req.params._id;
             const { email, password } = req.body;
 
             if (password) {
@@ -62,7 +62,7 @@ export const restaurantOwnerControllers = {
     },
     deleteOwner: async (req, res) => {
         try {
-            const id = req.params.id;
+            const id = req.params._id;
             const deleteOwner = await RestaurantOwnerUsers.findByIdAndDelete(id);
             if (!deleteOwner) {
                 res.status(404).json({ error: 'Account not found' });

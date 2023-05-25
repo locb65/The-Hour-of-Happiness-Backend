@@ -64,7 +64,7 @@ export const restaurantControllers = {
     },
     updateRestaurant: async (req, res) => {
         try {
-            const id = req.params.id;
+            const id = req.params._id;
             const restaurant = await Restaurant.findByIdAndUpdate(id, req.body, { new: true });
             res.json(restaurant);
         } catch (err) {
@@ -74,7 +74,7 @@ export const restaurantControllers = {
     },
     deleteRestaurant: async (req, res) => {
         try {
-            const id = req.params.id;
+            const id = req.params._id;
             const deleteRestaurant = await Restaurant.findByIdAndDelete(id)
             res.json(deleteRestaurant)
         } catch (err) {
