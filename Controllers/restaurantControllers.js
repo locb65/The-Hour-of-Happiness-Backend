@@ -39,14 +39,14 @@ export const restaurantControllers = {
     },
     findRestaurantbyID: async (req, res) => {
         try {
-            const id = req.params._id;
+            const id = req.params.id;
             if (!id) {
                 return res.status(400).json({ message: "Invalid restaurant ID" });
               }
             const restaurantByID = await Restaurant.findById(id);
-            if (!restaurantByID) {
+              if (!restaurantByID) {
                 return res.status(404).json({ message: "Restaurant not found" });
-              }
+                }
             res.json(restaurantByID);
         } catch (err) {
             console.log(err);
@@ -64,7 +64,7 @@ export const restaurantControllers = {
     },
     updateRestaurant: async (req, res) => {
         try {
-            const id = req.params._id;
+            const id = req.params.id;
             const restaurant = await Restaurant.findByIdAndUpdate(id, req.body, { new: true });
             res.json(restaurant);
         } catch (err) {
@@ -74,7 +74,7 @@ export const restaurantControllers = {
     },
     deleteRestaurant: async (req, res) => {
         try {
-            const id = req.params._id;
+            const id = req.params.id;
             const deleteRestaurant = await Restaurant.findByIdAndDelete(id)
             res.json(deleteRestaurant)
         } catch (err) {
