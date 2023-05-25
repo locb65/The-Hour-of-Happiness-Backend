@@ -40,7 +40,13 @@ export const restaurantControllers = {
     findRestaurantbyID: async (req, res) => {
         try {
             const id = req.params.id;
-            const restaurantByID = await Restaurant.findById(id)
+            if (!id) {
+                return res.status(400).json({ message: "Invalid restaurant ID" });
+              }
+            const restaurantByID = await Restaurant.findById(id);
+            if (!restaurantByID) {
+                return res.status(404).json({ message: "Restaurant not found" });
+              }
             res.json(restaurantByID);
         } catch (err) {
             console.log(err);
