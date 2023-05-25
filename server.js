@@ -55,7 +55,7 @@ const mongoUrl = "mongodb://localhost/happyhourdb";
 
 // cors options
 const corsOption = {
-    origin: "http://localhost:3000",
+    origin: "https://clinkcity.netlify.app",
     credentials: true,
     optionSuccessStatus: 200,
   };
