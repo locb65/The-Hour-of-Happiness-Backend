@@ -20,7 +20,7 @@ const mySecretKey = process.env.SECRET_KEY
 const cloudinaryName = process.env.CLOUD_NAME
 const cloudinarySecret = process.env.CLOUD_API_SECRET_KEY
 const cloudinaryAPIKey = process.env.CLOUD_API_KEY
-const MONGO_URI = process.env.MONGO_URL
+const MONGO_URI = process.env.MONGO_URI
 
 // cloudiary settings
 cloudinary.config({
