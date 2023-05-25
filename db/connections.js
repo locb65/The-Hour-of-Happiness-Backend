@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 dotenv.config()
-const MONGO_URI = process.env.MONGO_URL
+const MONGO_URI = process.env.MONGO_URI
 const URI = "mongodb://localhost/happyhourdb";
 // mongo connections script
 mongoose.connect(MONGO_URI || URI, {
