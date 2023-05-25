@@ -3,11 +3,13 @@ import dotenv from "dotenv";
 
 dotenv.config()
 const MONGO_URI = process.env.MONGO_URI
+const DBUSER = process.env.DBUSER
+const DBPASS = process.env.DBPASS
 const URI = "mongodb://localhost/happyhourdb";
 // mongo connections script
 mongoose.connect(
     // MONGO_URI,
-    'mongodb+srv://clinkcityadmin:testpassword123456789@clink-city.ppzbl7l.mongodb.net/?retryWrites=true&w=majority',
+    `mongodb+srv://${DBUSER}:${DBPASS}@clink-city.ppzbl7l.mongodb.net/?retryWrites=true&w=majority`,
     {
     useNewUrlParser: true,
     useUnifiedTopology: true,

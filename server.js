@@ -22,6 +22,9 @@ const cloudinarySecret = process.env.CLOUD_API_SECRET_KEY
 const cloudinaryAPIKey = process.env.CLOUD_API_KEY
 const MONGO_URI = process.env.MONGO_URI
 
+const DBUSER = process.env.DBUSER
+const DBPASS = process.env.DBPASS
+
 // cloudiary settings
 cloudinary.config({
   cloud_name: cloudinaryName,
@@ -74,7 +77,7 @@ app.use(
     store:
      MongoStore.create({
       // mongoUrl: MONGO_URI,
-      mongoUrl: 'mongodb+srv://clinkcityadmin:testpassword123456789@clink-city.ppzbl7l.mongodb.net/?retryWrites=true&w=majority',
+      mongoUrl: `mongodb+srv://${DBUSER}:${DBPASS}@clink-city.ppzbl7l.mongodb.net/?retryWrites=true&w=majority`,
       autoRemove: 'native'
     }),
   })
